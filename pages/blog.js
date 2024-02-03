@@ -1,34 +1,42 @@
 import React from 'react'
 import styles from "@/styles/Blog.module.css";
 import Link from 'next/link';
-
+import { useState, useEffect } from 'react';
 const blog = () => {
-  return (
+    const [jsonData, setJsonData] = useState([]);
+    useEffect(() => {
+      async function fetchData() {
+        try {
+          const response = await fetch('/api/data');
+          if (response.ok) {
+            const data = await response.json();
+            setJsonData(data);
+          } else {
+            console.error('Failed to fetch JSON data');
+          }
+        } catch (error) {
+          console.error('Error fetching JSON data:', error);
+        }
+      }
+      fetchData();
+    }, []);
+
+    return (
 <div className={styles.pointlistContainer}>
-  <h2 className={styles.heading}>Three Awesome Points</h2>
+  <h2 className={styles.heading}>All Blogs</h2>
+
+  {jsonData.map((item, index) => (
   <ul className={styles.pointlist}>
     <li className={styles.pointItem}>
-      <Link href="/blogpost/learn-javascript" className={styles.pointLink}>
-        Learn JavaScript
+      <Link href={`/blogpost/${item.title} `} className={styles.pointLink}>
+        {item.title}
       </Link>
-      <h3 className={styles.pointDescriptionHeader}>About JavaScript</h3> {/* Updated header */}
-      <p className={styles.pointDescription}>JavaScript is a powerful and versatile programming language used for web development. It allows you to create dynamic and interactive websites.</p> {/* Updated paragraph */}
-    </li>
-    <li className={styles.pointItem}>
-      <Link href="/blogpost/learn-Python" className={styles.pointLink}>
-        Learn Python
-      </Link>
-      <h3 className={styles.pointDescriptionHeader}>About Python</h3> {/* Updated header */}
-      <p className={styles.pointDescription}>Python is a high-level programming language known for its simplicity and readability. It is widely used in various domains such as web development, data science, and artificial intelligence.</p> {/* Updated paragraph */}
-    </li>
-    <li className={styles.pointItem}>
-      <Link href="/blogpost/learn-java" className={styles.pointLink}>
-        Learn Java
-      </Link>
-      <h3 className={styles.pointDescriptionHeader}>About Java</h3> {/* Updated header */}
-      <p className={styles.pointDescription}>Java is a popular programming language known for its portability and reliability. It is used for developing a wide range of applications, including mobile apps, enterprise software, and web applications.</p> {/* Updated paragraph */}
+      {/* <h3 className={styles.pointDescriptionHeader}>About JavaScript</h3> Updated header */}
+      <p className={styles.pointDescription}>{item.description.substr(0 , 100)} ..</p> {/* Updated paragraph */}
     </li>
   </ul>
+   ))}
+
 </div>
 
 

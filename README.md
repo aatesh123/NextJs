@@ -40,4 +40,4 @@ The easiest way to deploy your Next.js app is to use the [Vercel Platform](https
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details. -->
 
 
-In this project I have stored data in json file. Data means blogs. i'm reading them using fs. From frontend with the help of fetch api i'm reading the data of file and Displaying in frontend. Frontend and backend handled within Next.js
+In this project I have stored data in json file. Data means blogs. i'm reading them using fs. From frontend with the help of fetch api i'm reading the data of file and Displaying in frontend. Frontend and backend handled within Next.js. We have included server side rendering as well for better Bot search.

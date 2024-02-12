@@ -6,11 +6,16 @@ import fs from 'fs';
 import styles from '../../styles/BlogPost.module.css';
 
 const Slug = ({ jsonData }) => {
+ function fun(c){
+    return {__html: c };
+ }
+
   return (
     <div className={styles.topicContainer}>
       <h2 className={styles.topicTitle}>{jsonData.title}</h2>
       <div className={styles.topicContent}>
-        <p>{jsonData.description}</p>
+      <div dangerouslySetInnerHTML={fun(jsonData.description)} />
+        {/* <p></p> */}
       </div>
     </div>
   );
@@ -24,7 +29,7 @@ export async function getStaticPaths() {
     .map(file => ({
       params: { slug: file.replace('.json', '') }
     }));
-  console.log(paths)
+  //console.log(paths)
   return { paths, fallback: false };
 }
 

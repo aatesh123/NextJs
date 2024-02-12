@@ -1,5 +1,5 @@
 {
   "title": "How-to-learn-java",
-  "description": "Dive into enterprise application development with Java programming language. Build scalable and robust applications for businesses.",
-  "author": "Alex Johnson"
+  "description":  "<div style=\"color: #cccccc;background-color: #1f1f1f;font-size: 14px;\"><span style=\"color: #6a9955;\">Java is a statically-typed, object-oriented programming language designed to have as few implementation&nbsp;<\/span><span style=\"color: #6a9955;\">dependencies as possible, making it highly portable across platforms<\/span><\/div>"
+  ,"author": "Alex Johnson"
 }

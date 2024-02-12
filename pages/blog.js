@@ -6,7 +6,10 @@ import Link from 'next/link';
 import { getStaticProps } from './api/data'; // Import getStaticProps from API route
 
 const Blog = ({ jsonData }) => {
-    return (
+  function fun(c){
+    return {__html: c };
+ }
+    return (<>
         <div className={styles.pointlistContainer}>
             <h2 className={styles.heading}>All Blogs</h2>
 
@@ -16,12 +19,14 @@ const Blog = ({ jsonData }) => {
                         <Link href={`/blogpost/${item.title}`}>
                             {item.title}
                         </Link>
-                        <p className={styles.pointDescription}>{item.description.substr(0, 100)} ..</p>
+                        <p className={styles.pointDescription} dangerouslySetInnerHTML={fun(item.description)} ></p>
+                        {/* {item.description.substr(0, 100)} ..*/ }
+                        
                     </li>
                 </ul>
             ))}
         </div>
-
+        </>
     );
 };
 

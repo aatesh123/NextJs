@@ -19,7 +19,7 @@ const Blog = ({ jsonData }) => {
                         <Link href={`/blogpost/${item.title}`}>
                             {item.title}
                         </Link>
-                        <p className={styles.pointDescription} dangerouslySetInnerHTML={fun(item.description)} ></p>
+                        <p className={styles.pointDescription}   dangerouslySetInnerHTML={fun(item.description)}  ></p>
                         {/* {item.description.substr(0, 100)} ..*/ }
                         
                     </li>
